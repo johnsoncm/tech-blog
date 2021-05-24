@@ -16,3 +16,9 @@ router.post('/' , withAuth, async (req, res) => {
         res.status(500).json(error);
     }
 });
+
+router.put('/', withAuth, async (req, res) =>{
+
+});
+
+router.delete('/')
