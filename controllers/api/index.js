@@ -4,7 +4,7 @@ const commentRoutes = require('./comment-routes');
 const postRoutes = require('./post-routes');
 // const { Model } = require('sequelize/types');
 
-router.use('/users' , userRoutse);
+router.use('/users' , userRoutes);
 router.use('/comments' , commentRoutes);
 router.use('/posts' , postRoutes);
 

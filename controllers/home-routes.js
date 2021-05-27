@@ -1,5 +1,8 @@
 const router = require('express').Router();
-const { Post, Comment, User } = require('../../models');
+// const { Post, Comment, User } = require('../../models');
+const { Post, Comment, User } = require('../models');
+// const withAuth = require('../../utils/auth');
+const withAuth = require('../utils/auth');
 
 // 4 get routes
 
@@ -76,3 +79,5 @@ router.get('/login', (req, res)=>{
     }
 res.render('login');
 }); 
+
+module.exports = router;
