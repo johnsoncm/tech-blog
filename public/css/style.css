@@ -3,7 +3,7 @@ header, .project:not(:last-child) {
   }
   
   .btn-primary {
-    background: none;
+    background: black;
     border: none;
     padding: 0;
     cursor: pointer;
@@ -23,3 +23,6 @@ header, .project:not(:last-child) {
     margin-left: -5px;
   }
   
+  .justify-space-between{
+    justify-content: space-between;
+  }
