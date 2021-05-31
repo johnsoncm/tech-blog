@@ -1,1 +1,28 @@
-if each statement
+<div class="card single-post-padding">
+    <h1 id="post-title" class="post-header">{{post.title}}</h1>
+    <h4>Posted By: {{post.user.username}} on date</h4>
+    <div class="container">
+        <p id="post-body" class="post-text post-text-padding">{{post.body}}</p>
+    </div>
+    {{! ----- if this is my post i can edit and delete it ----}}
+    {{#if currentUser}}
+    <button id="edit-btn">Edit</button>
+    <button id="delete-btn">Delete</button>
+    {{/if}}
+</div>
+
+<div class="padding-20">
+    <form id="comment-form" class="padding-20">
+        <label for="comment-text">Leave A Comment</label>
+        <input type="textarea" class="padding-20" name="comment-text" id="comment-text">
+        <button class="padding-20" id="post-comment-btn">Post</button>        
+    </form>
+</div>
+{{#each post.comments as |aComment|}}
+{{>comment aComment}}
+{{/each}}
+<link rel="stylesheet" href="/css/stye.css">
+<script src="/public/js/comment.js"></script>
+{{#if currentUser}}
+<script src="/public/js/edit.js"></script>
+{{/if}}
