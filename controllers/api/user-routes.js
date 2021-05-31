@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+
 // 3 post routes
 
 router.post('/', async (req, res) => {
@@ -25,6 +27,7 @@ router.post('/', async (req, res) => {
         res.send(req.body)
 
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);
         
     }
