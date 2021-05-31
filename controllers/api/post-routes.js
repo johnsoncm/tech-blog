@@ -3,8 +3,8 @@ const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // post, put, delete routes
-
-router.post('/' , withAuth, async (req, res) => {
+//add withAuth into '/', withAuth, async in all of these routes when working with website
+router.post('/' , async (req, res) => {
     const body = req.body
     try {
         const newPost = await Post.create({
@@ -13,11 +13,12 @@ router.post('/' , withAuth, async (req, res) => {
         })
         res.json(newPost);
     } catch (error) {
+        console.log(error);
         res.status(500).json(error);
     }
 });
 
-router.put('/', withAuth, async (req, res) =>{
+router.put('/', async (req, res) =>{
     try{
         const postData = await Post.update(
             { post_name: req.body.post_name },
@@ -31,7 +32,7 @@ router.put('/', withAuth, async (req, res) =>{
 
 });
 
-router.delete('/:id', withAuth, async(req, res) =>{
+router.delete('/:id', async(req, res) =>{
     try{
         const postData = await Post.destroy({
             where: {
