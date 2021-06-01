@@ -1,9 +1,12 @@
 const loginFormHandler = async (event) => {
+  console.log('test');
     event.preventDefault();
   
     // Collect values from the login form
     const email = document.getElementById('email-login').value.trim();
     const password = document.getElementById('password-login').value.trim();
+    console.log('email', email)
+    console.log('password', password)
   
     if (email && password) {
       // Send a POST request to the API endpoint
@@ -27,9 +30,9 @@ const loginFormHandler = async (event) => {
   
   
   
-  document
-    .querySelector('#login-form')
-    .addEventListener('submit', loginFormHandler);
+  // document
+  //   .querySelector('#login-form')
+    // .addEventListener('#login-btn', loginFormHandler);
   
 
   

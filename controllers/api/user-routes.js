@@ -24,9 +24,10 @@ router.post('/', async (req, res) => {
             req.session.userId = newUser.id;
             req.session.userName = newUser.username;
             req.session.loggedIn = true;
-            res.json(newUser);
-        })
-        res.send(req.body)
+            
+                    })
+                    res.json(newUser);
+        // res.send(req.body)
 
     } catch (error) {
         console.log(error)
