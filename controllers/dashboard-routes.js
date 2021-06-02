@@ -7,7 +7,7 @@ const withAuth = require('../utils/auth');
 // 3 get routes
 //replace ('/dashboard' ,  withAuth, (req,res))
 //get all posts associated with the logged-in user
-router.get('/dashboard', (req, res) => {
+router.get('/', (req, res) => {
     Post.findAll({
         where: {
             user_id: req.session.user_id,
@@ -33,8 +33,6 @@ router.get('/dashboard', (req, res) => {
             },
         ],
     })
-
-})
     .then((dbPostData) => {
         if (!dbPostData) {
             res.status(404).json({ message: "No such post available" });
@@ -45,9 +43,12 @@ router.get('/dashboard', (req, res) => {
         res.render("/dashboard", { posts, loggedIn: req.session.loggedIn });
     })
     .catch((error) => {
-        console.logs(error);
+        console.log(error);
         res.status(500).json(error);
     })
+
+})
+  
 
 //get a post to edit
 

@@ -38,9 +38,11 @@ router.post('/', async (req, res) => {
 
 //login
 router.post('/login' , async (req, res) =>{
+   console.log('are you working', req.body);
     try{
         const userData = await User.findOne({ where: { email: req.body.email } });
         console.log('userdata', userData)
+        
         if (!userData) {
             res
                 .status(400)

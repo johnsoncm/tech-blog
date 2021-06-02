@@ -2,7 +2,7 @@
     <h1 id="post-title" class="post-header">{{post.title}}</h1>
     <h4>Posted By: {{post.user.username}} on date</h4>
     <div class="container">
-        <p id="post-body" class="post-text post-text-padding">{{post.body}}</p>
+        <p id="post-body" class="post-text post-text-padding">{{post.title}}{{post.content}}</p>
     </div>
     {{! ----- if this is my post i can edit and delete it ----}}
     {{#if currentUser}}
