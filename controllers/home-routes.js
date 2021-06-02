@@ -53,7 +53,7 @@ router.get('/post/:id', async (req, res) => {
 
 //get to find the user based on the session id
 
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
    try{
     const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },

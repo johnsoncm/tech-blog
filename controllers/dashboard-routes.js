@@ -8,6 +8,8 @@ const withAuth = require('../utils/auth');
 //replace ('/dashboard' ,  withAuth, (req,res))
 //get all posts associated with the logged-in user
 router.get('/', (req, res) => {
+    console.log('i am here')
+    //PROBLEM IS BETWEEN HERE AND 
     Post.findAll({
         where: {
             user_id: req.session.user_id,
@@ -30,17 +32,21 @@ router.get('/', (req, res) => {
                         attributes: ["name"],
                     },
                 ],
+            
             },
+
         ],
-    })
-    .then((dbPostData) => {
+       
+    }).then((dbPostData) => {
+        console.log('i am here TOO!!!!')
         if (!dbPostData) {
             res.status(404).json({ message: "No such post available" });
             return;
         }
-        const posts = dbPostData.map((post) => post.get({ plain: true }));
-        console.log(posts);
-        res.render("/dashboard", { posts, loggedIn: req.session.loggedIn });
+         const posts = dbPostData.map((post) => post.get({ plain: true }));
+        //HERE AND ALSO CONSOLE LOG MORE STUFF ABOVE
+        console.log('look at this post data!!!!', posts);
+        res.render('dashboard', { layout: 'dashboard', posts, loggedIn: req.session.loggedIn });
     })
     .catch((error) => {
         console.log(error);
