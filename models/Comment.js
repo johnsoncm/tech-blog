@@ -9,16 +9,13 @@ Comment.init(
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        }
-    },
-    
-    {
+        },
+
         body: {
             type: DataTypes.STRING,
             allowNull: false
-        }
-    },
-    {
+        },
+  
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -26,9 +23,8 @@ Comment.init(
                     model: 'user',
                     key: 'id'
                 }
-        }
-    },
-    {
+        },
+    
         post_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -36,7 +32,7 @@ Comment.init(
                 model: 'post',
                 key: 'id'
             }
-        }
+        },
     },
     {
         sequelize,

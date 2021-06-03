@@ -17,36 +17,39 @@ router.get('/', (req, res) => {
         attributes: ["id", "title", "content", "date", "userID"],
         include: [
             {
-                model: User,
-                as: "user",
-                attributes: ["name"],
+          model: Comment,
+          attributes: [
+              'id',
+              'body',
+              'user_id',
+              'post_id'
+          ],
+          include: {
+              model: User,
+              attributes: ['name']
+          }
             },
             {
-                model: Comment,
-                as: "comment",
-                attributes: ["id", "user_id", "post_id", "body"],
-                include: [
-                    {
-                        model: User,
-                        as: "user",
-                        attributes: ["name"],
-                    },
-                ],
-            
-            },
-
-        ],
+                model: User,
+                attributes: ['name']
+                         
+            }
+        ]
        
-    }).then((dbPostData) => {
+    })
+    .then((dbPostData) => {
         console.log('i am here TOO!!!!')
         if (!dbPostData) {
             res.status(404).json({ message: "No such post available" });
             return;
+            
         }
+        console.log(dbPostData)
          const posts = dbPostData.map((post) => post.get({ plain: true }));
         //HERE AND ALSO CONSOLE LOG MORE STUFF ABOVE
-        console.log('look at this post data!!!!', posts);
+        console.log('look at this post data!!!!', dbPostData);
         res.render('dashboard', { layout: 'dashboard', posts, loggedIn: req.session.loggedIn });
+  console.log('HELLO!!')
     })
     .catch((error) => {
         console.log(error);
