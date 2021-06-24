@@ -47,8 +47,8 @@ router.get('/', (req, res) => {
         console.log(dbPostData)
          const posts = dbPostData.map((post) => post.get({ plain: true }));
         //HERE AND ALSO CONSOLE LOG MORE STUFF ABOVE
-        console.log('look at this post data!!!!', dbPostData);
-        res.render('dashboard', { layout: 'dashboard', posts, loggedIn: req.session.loggedIn });
+        console.log('look at this post data!!!!', posts);
+        res.render('profile-dashboard', { layout: 'dashboard', posts, loggedIn: req.session.loggedIn });
   console.log('HELLO!!')
     })
     .catch((error) => {
